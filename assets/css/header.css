@@ -1,0 +1,9 @@
+header {
+    display: flex;
+    justify-content: center;
+    padding: 20px 50px;
+
+    .content {
+        width: 1200px;
+    }
+}

@@ -58,26 +58,7 @@ function np_enqueue_styles()
 {
 	$theme_version = wp_get_theme()->get('Version');
 	wp_enqueue_style('np-style', NP_THEME_TEMPLATE_URL . 'assets/css/theme.css', array(), $theme_version);
-
-	// Woocommerce Root Style
-	if (is_checkout() || is_cart()) {
-		wp_enqueue_style('np-woo-root-style', NP_THEME_TEMPLATE_URL . 'assets/css/woocommerce/root.css', array(), $theme_version);
-	}
-	// Checkout page
-	if (is_checkout()) {
-		wp_enqueue_style('np-review-order-style', NP_THEME_TEMPLATE_URL . 'assets/css/woocommerce/checkout/review-order.css', array(), $theme_version);
-		wp_enqueue_style('np-form-style', NP_THEME_TEMPLATE_URL . 'assets/css/woocommerce/checkout/forms.css', array(), $theme_version);
-		wp_enqueue_style('np-payment-style', NP_THEME_TEMPLATE_URL . 'assets/css/woocommerce/checkout/payment.css', array(), $theme_version);
-		wp_enqueue_style('np-coupon-style', NP_THEME_TEMPLATE_URL . 'assets/css/woocommerce/checkout/coupon.css', array(), $theme_version);
-		wp_enqueue_style('np-terms-style', NP_THEME_TEMPLATE_URL . 'assets/css/woocommerce/checkout/terms.css', array(), $theme_version);
-		wp_enqueue_style('np-message-style', NP_THEME_TEMPLATE_URL . 'assets/css/woocommerce/checkout/message.css', array(), $theme_version);
-	}
-	// cart page
-	if (is_cart()) {
-		wp_enqueue_style('np-cart-style', NP_THEME_TEMPLATE_URL . 'assets/css/woocommerce/cart/cart.css', array(), $theme_version);
-		wp_enqueue_style('np-cart-totals-style', NP_THEME_TEMPLATE_URL . 'assets/css/woocommerce/cart/cart-totals.css', array(), $theme_version);
-		wp_enqueue_style('np-cart-shipping-style', NP_THEME_TEMPLATE_URL . 'assets/css/woocommerce/cart/cart-shipping.css', array(), $theme_version);
-	}
+	wp_enqueue_style('np-header-style', NP_THEME_TEMPLATE_URL . 'assets/css/header.css', array(), $theme_version);
 }
 add_action('wp_enqueue_scripts', 'np_enqueue_styles');
 
@@ -90,21 +71,6 @@ function np_enqueue_scripts()
 {
 	$theme_version = wp_get_theme()->get('Version');
 	wp_enqueue_script('np-scripts', NP_THEME_TEMPLATE_URL . 'assets/js/theme.js', array(), $theme_version, true);
-	wp_localize_script('np-scripts', 'np', array(
-		'ajax_url' => admin_url('admin-ajax.php'),
-		'nonce' => wp_create_nonce('np-nonce'),
-		'theme_url' => NP_THEME_TEMPLATE_URL,
-	));
-	if (is_cart()) {
-		wp_enqueue_script('np-cart-scripts', NP_THEME_TEMPLATE_URL . 'assets/js/woocommerce/cart.js', array(), $theme_version, true);
-	}
-	if (is_checkout()) {
-		wp_enqueue_script('np-checkout-scripts', NP_THEME_TEMPLATE_URL . 'assets/js/woocommerce/checkout.js', array(), $theme_version, true);
-		wp_localize_script('np-checkout-scripts', 'my_ajax_object', [
-			'ajax_url' => admin_url('admin-ajax.php'),
-			'nonce' => wp_create_nonce('custom_coupon_nonce')
-		]);
-	}
 }
 add_action('wp_enqueue_scripts', 'np_enqueue_scripts');
 
