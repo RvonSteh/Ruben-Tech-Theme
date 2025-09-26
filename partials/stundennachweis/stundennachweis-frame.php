@@ -39,7 +39,8 @@ $days = get_field('days', $post_id);
             <?php
             $groups = array_chunk($days, 7);
 
-            foreach ($groups as $group) : ?>
+            foreach ($groups as $gIndex => $group) :
+            ?>
                 <div class="row ">
                     <div class="col full-height">
                         <div class="cell">
@@ -49,36 +50,51 @@ $days = get_field('days', $post_id);
 
                     <div class="col">
                         <?php foreach ($group as $day) : ?>
-                            <div class="cell">
-                                <?php echo esc_html($day['date']); ?>
 
+                            <div class="cell">
+                                01.09.2025
                             </div>
-                        <?php endforeach; ?>
+                        <?php
+                        endforeach; ?>
                     </div>
                     <div class="col">
-                        <?php foreach ($group as $day) : ?>
+                        <?php foreach ($group as $dIndex => $day) :
+                            $index = (($gIndex * 7) + $dIndex + 1);
+                        ?>
                             <div class="cell">
-                                <input value="<?php echo esc_html($day['von']); ?>" type="text">
+                                <input index="<?php echo $index; ?>" field_name="von" value="<?php echo esc_html($day['von']); ?>" type="text">
                             </div>
-                        <?php endforeach; ?>
+                        <?php
+                            $index++;
+                        endforeach; ?>
                     </div>
                     <div class="col">
-                        <?php foreach ($group as $day) : ?>
+                        <?php foreach ($group as $dIndex => $day) :
+                            $index = (($gIndex * 7) + $dIndex + 1);
+                        ?>
                             <div class="cell">
-                                <input value="<?php echo esc_html($day['bis']); ?>" type="text">
+                                <input field_name="bis" index="<?php echo $index ?>" value="<?php echo esc_html($day['bis']); ?>" type="text">
                             </div>
-                        <?php endforeach; ?>
+                        <?php
+                            $index++;
+                        endforeach; ?>
                     </div>
                     <div class="col">
-                        <?php foreach ($group as $day) : ?>
+                        <?php foreach ($group as $dIndex => $day) :
+                            $index = (($gIndex * 7) + $dIndex + 1);
+                        ?>
                             <div class="cell">
-                                <input value="<?php echo esc_html($day['pause']); ?>" type="text">
+                                <input field_name="pause" index="<?php echo $index ?>" value="<?php echo esc_html($day['pause']); ?>" type="text">
                             </div>
-                        <?php endforeach; ?>
+                        <?php
+                            $index++;
+                        endforeach; ?>
                     </div>
                     <div class="col">
-                        <?php foreach ($group as $day) : ?>
-                            <div class="cell">
+                        <?php foreach ($group as $dIndex => $day) :
+                            $index = (($gIndex * 7) + $dIndex + 1);
+                        ?>
+                            <div index="<?php echo $index ?>" class="cell">
                                 <?php
                                 $start = new DateTime($day['von']);
                                 $ende  = new DateTime($day['bis']);
@@ -89,16 +105,20 @@ $days = get_field('days', $post_id);
                                 echo $stundenGesamt;
                                 ?>
                             </div>
-                        <?php endforeach; ?>
+                        <?php
+                            $index++;
+                        endforeach; ?>
                     </div>
                     <div class="col">
-                        <?php foreach ($group as $day) : ?>
-                            <div class="cell">
-                                <input value="<?php echo esc_html($day['anmerkung']); ?>" type="text">
+                        <?php foreach ($group as $dIndex => $day) :
+                            $index = (($gIndex * 7) + $dIndex + 1);
+                        ?> <div class="cell">
+                                <input field_name="anmerkung" index="<?php echo $index ?>" value="<?php echo esc_html($day['anmerkung']); ?>" type="text">
                             </div>
-                        <?php endforeach; ?>
+                        <?php
+                            $index++;
+                        endforeach; ?>
                     </div>
-
 
                     <div class="col full-height">
                         <div class="cell">
@@ -106,7 +126,8 @@ $days = get_field('days', $post_id);
                         </div>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php
+            endforeach; ?>
         </div>
 
     </div>
