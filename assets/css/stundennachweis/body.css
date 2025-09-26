@@ -3,141 +3,145 @@ body {
     flex-direction: column;
 }
 
-.pdf-frame {
-    --cell-height: 20px;
-    width: 800px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px 30px 100px 30px;
-    justify-content: start;
-
-    * {
-        font-family: 'Arial', sans-serif;
-        font-size: 10px !important;
-        font-weight: 600;
-        line-height: 1;
-    }
-
-    .table {
-        display: grid;
-        grid-template-columns: 3.5fr 5fr 2fr;
-        border: 2px solid #000;
-
-        .col {
-            display: flex;
-            flex-direction: column;
-            border-right: 2px solid #000;
-
-            &:last-of-type {
-                border: none;
-            }
-
-            .cell {
-                display: flex;
-                align-items: center;
-                justify-content: start;
-                padding: 0px 2px;
-                border-bottom: 2px solid #000;
-                height: var(--cell-height);
-
-                &:last-of-type {
-                    border-bottom: 0;
-                }
-
-                &.smal,
-                &.small * {
-                    font-size: 10px;
-
-
-                }
-
-
-                &.center,
-                &.center * {
-                    text-align: center;
-
-                }
-
-                &.light,
-                &.light * {
-                    font-weight: 300;
-
-
-                }
-
-                &.--dark {
-                    background: #C0C0C0;
-                }
-
-                &.two-cell {}
-
-                &.three-cell {
-                    height: calc(var(--cell-height) *3);
-                }
-
-                span b {
-                    font-weight: 700 !important;
-                }
-            }
-        }
-    }
-}
-
-.main-table {
-    display: flex;
-    flex-direction: column;
-
-    .body {
-        display: flex;
-        border: 2px solid #000;
-
+.pdf-container {
+    overflow-x: auto;
+    .pdf-frame {
+        --cell-height: 18px;
+        width: 800px;
         display: flex;
         flex-direction: column;
+        gap: 20px;
+        padding: 20px 30px 100px 30px;
+        justify-content: start;
+        overflow-x: auto;
 
-        .row {
+        * {
+            font-family: 'Arial', sans-serif;
+            font-size: 10px !important;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .table {
             display: grid;
-            grid-template-columns: .5fr 1fr 1fr 1fr 1fr 1fr 3fr 2fr;
-            border-bottom: 1px solid #000;
+            grid-template-columns: 3.5fr 5fr 2fr;
+            border: 2px solid #000;
 
             .col {
                 display: flex;
                 flex-direction: column;
-                border-right: 1px solid #000;
+                border-right: 2px solid #000;
 
-                &.full-height {
-                    .cell {
-                        height: calc(var(--cell-height) *7);
-                    }
-                }
-            }
-
-            .cell {
-                display: flex;
-                align-items: center;
-                border-bottom: 1px solid #000;
-                height: var(--cell-height);
-                line-height: 1;
-                padding: 0px 5px;
-
-                input {
-                    padding: 0;
+                &:last-of-type {
                     border: none;
-                    border-radius: 0;
-                    outline: none;
-                    box-shadow: none;
-
                 }
-            }
 
-            &.border {
                 .cell {
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+                    padding: 0px 2px;
                     border-bottom: 2px solid #000;
+                    height: var(--cell-height);
+
+                    &:last-of-type {
+                        border-bottom: 0;
+                    }
+
+                    &.smal,
+                    &.small * {
+                        font-size: 10px;
+
+
+                    }
+
+
+                    &.center,
+                    &.center * {
+                        text-align: center;
+
+                    }
+
+                    &.light,
+                    &.light * {
+                        font-weight: 300;
+
+
+                    }
+
+                    &.--dark {
+                        background: #C0C0C0;
+                    }
+
+                    &.two-cell {}
+
+                    &.three-cell {
+                        height: calc(var(--cell-height) *3);
+                    }
+
+                    span b {
+                        font-weight: 700 !important;
+                    }
                 }
             }
         }
     }
 
+    .main-table {
+        display: flex;
+        flex-direction: column;
+
+        .body {
+            display: flex;
+            border: 2px solid #000;
+
+            display: flex;
+            flex-direction: column;
+
+            .row {
+                display: grid;
+                grid-template-columns: .5fr 1fr 1fr 1fr 1fr 1fr 3fr 2fr;
+                border-bottom: 1px solid #000;
+
+                .col {
+                    display: flex;
+                    flex-direction: column;
+                    border-right: 1px solid #000;
+
+                    &.full-height {
+                        .cell {
+                            height: calc(var(--cell-height) *7);
+                        }
+                    }
+                }
+
+                .cell {
+                    display: flex;
+                    align-items: center;
+                    border-bottom: 1px solid #000;
+                    height: var(--cell-height);
+                    line-height: 1;
+                    padding: 0px 5px;
+
+                    input {
+                        padding: 0;
+                        border: none;
+                        border-radius: 0;
+                        outline: none;
+                        box-shadow: none;
+
+                    }
+                }
+
+                &.border {
+                    .cell {
+                        border-bottom: 2px solid #000;
+                    }
+                }
+            }
+        }
+
+    }
 }
 
 .loading {

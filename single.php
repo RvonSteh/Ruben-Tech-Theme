@@ -6,6 +6,7 @@ if (function_exists('elementor_theme_do_location') && elementor_theme_do_locatio
         while (have_posts()) : the_post(); ?>
             <div class="post-content">
             <?php echo get_np_template_part('partials/stundennachweis/stundennachweis', 'frame'); ?>
+            <?php echo get_np_template_part('partials/stundennachweis/stundennachweis', 'mask'); ?>
 
             </div>
 <?php endwhile;

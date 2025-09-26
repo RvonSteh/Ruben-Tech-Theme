@@ -22,10 +22,10 @@ class Stundennachweis {
         const opt = {
             margin: [0, 0, 0, 0],
             pagebreak: {
-
+                mode: ['avoid-all', 'css', 'legacy']
             },
             html2canvas: {
-                scale: 2,
+                scale: 10,
                 scrollY: 0
             },
             jsPDF: {
@@ -69,12 +69,14 @@ class Stundennachweis {
                 dataType: 'json',
                 data: {
                     action: 'update_repeater',
-                    nonce: myplugin.nonce, 
-                    post_id: this.$postId, 
+                    nonce: myplugin.nonce,
+                    post_id: this.$postId,
                     repeater: JSON.stringify(data)
                 },
                 success: function (res) {
+                    // $('.post-content').html('test');
                     window.location.reload();
+
                 }
             });
         });
