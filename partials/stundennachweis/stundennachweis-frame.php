@@ -158,3 +158,5 @@ $days = get_field('days', $post_id);
         </div>
     </div>
 </div>
+
+<div class="loading"></div>

@@ -118,7 +118,10 @@ class Stundennachweis {
         const opt = {
             margin: [0, 0, 0, 0],
             pagebreak: {
+                pagebreak: { mode: ['avoid-all'] },
+
             },
+
             html2canvas: {
                 scale: 10,
                 scrollY: 0

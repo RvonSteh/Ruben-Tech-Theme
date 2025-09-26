@@ -2,7 +2,6 @@ body {
     display: flex;
     flex-direction: column;
     padding-top: 100px;
-    width: 800px;
 }
 
 .pdf-container {
@@ -16,7 +15,6 @@ body {
         gap: 20px;
         padding: 20px 30px 100px 30px;
         justify-content: start;
-        overflow-x: auto;
 
         * {
             font-family: 'Arial', sans-serif;
