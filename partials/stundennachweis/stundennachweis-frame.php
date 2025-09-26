@@ -158,6 +158,3 @@ $days = get_field('days', $post_id);
         </div>
     </div>
 </div>
-<button id="download">Download</button>
-<button id="updateRepeater">Update</button>
-<div class="loading"></div>

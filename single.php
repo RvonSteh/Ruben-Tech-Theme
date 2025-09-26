@@ -13,6 +13,7 @@ if (function_exists('elementor_theme_do_location') && elementor_theme_do_locatio
                 <?php echo get_np_template_part('partials/stundennachweis/stundennachweis', 'frame'); ?>
                 <?php echo get_np_template_part('partials/stundennachweis/stundennachweis', 'mask'); ?>
                 <?php echo get_np_template_part('partials/stundennachweis/stundennachweis', 'switcher'); ?>
+                <?php echo get_np_template_part('partials/stundennachweis/stundennachweis', 'download'); ?>
 
             </div>
 <?php endwhile;

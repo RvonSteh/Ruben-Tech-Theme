@@ -5,7 +5,7 @@ class Stundennachweis {
         this.$cells = this.$pdf.querySelectorAll('.cell input');
         this.$dates = this.$pdf.querySelectorAll('.cell.date')
         this.$updateButton = this.$root.querySelectorAll('.safe-post-data');
-        this.$downloadPDF = this.$root.querySelector('#download');
+        this.$downloadPDF = this.$root.querySelectorAll('.download-pdf');
         this.$loading = this.$root.querySelector('.loading');
         this.$postId = this.$pdf.getAttribute('post_id');
 
@@ -28,10 +28,12 @@ class Stundennachweis {
                 this.safeChanges();
             })
         });
+        this.$downloadPDF.forEach(download => {
+            download.addEventListener('click', () => {
+                this.download();
+            })
+        });
 
-        this.$downloadPDF.addEventListener('click', () => {
-            this.download();
-        })
         this.transmittData();
         this.toggleMask();
     }
@@ -50,9 +52,9 @@ class Stundennachweis {
             let currentIndex = null;
             let timeFrom = null;
             let timeTo = null;
+            let pause = null;
             let anmerkung = null;
 
-            // Eingabemaske auslesen
             for (const input of this.$maskInputs) {
                 const field = input.getAttribute('name') || input.getAttribute('data-field') || input.id;
 
@@ -69,7 +71,9 @@ class Stundennachweis {
                 else if (field === 'to') {
                     timeTo = input.value
                 }
-                else if (field === 'anmerkung') {
+                else if (field === 'pause') {
+                    pause = input.value
+                } else if (field === 'anmerkung') {
                     anmerkung = input.value
                 }
             }
@@ -79,11 +83,11 @@ class Stundennachweis {
                 return;
             }
 
-            this.insertData(currentIndex, timeFrom, timeTo, anmerkung);
+            this.insertData(currentIndex, timeFrom, timeTo, pause, anmerkung);
         });
     }
 
-    insertData(currentIndex, timeFrom, timeTo, anmerkung) {
+    insertData(currentIndex, timeFrom, timeTo, pause, anmerkung) {
         const selector = `.cell input[data-index="${currentIndex}"], .cell input[index="${currentIndex}"]`;
         const insertCells = document.querySelectorAll(selector);
 
@@ -94,6 +98,8 @@ class Stundennachweis {
                 inputEl.value = timeFrom;
             } else if (field === 'bis') {
                 inputEl.value = timeTo;
+            } else if (field === 'pause') {
+                inputEl.value = pause;
             } else if (field === 'anmerkung') {
                 inputEl.value = anmerkung;
             }
@@ -112,7 +118,6 @@ class Stundennachweis {
         const opt = {
             margin: [0, 0, 0, 0],
             pagebreak: {
-                mode: ['avoid-all', 'css', 'legacy']
             },
             html2canvas: {
                 scale: 10,

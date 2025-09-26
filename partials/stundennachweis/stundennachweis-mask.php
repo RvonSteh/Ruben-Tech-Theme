@@ -35,7 +35,11 @@ if (!defined('ABSPATH')) {
                 <input placeholder="z.B.: 16:00" id="to" type="text">
             </div>
             <div class="row day">
-                <label for="anmerkung">Arbeitsende</label>
+                <label for="pause">Pause (in Stunden)</label>
+                <input min="0" placeholder="z.B.: 1" id="pause" type="number">
+            </div>
+            <div class="row day">
+                <label for="anmerkung">Anmerkung</label>
                 <input placeholder="z.B.: Eleternabend" id="anmerkung" type="text">
             </div>
         </div>
