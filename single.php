@@ -4,9 +4,12 @@ if (function_exists('elementor_theme_do_location') && elementor_theme_do_locatio
 } else {
     if (have_posts()) :
         while (have_posts()) : the_post(); ?>
+            <div class="post-content">
             <?php echo get_np_template_part('partials/stundennachweis/stundennachweis', 'frame'); ?>
+
+            </div>
 <?php endwhile;
     endif;
 }
-
-get_footer();
+?>
+<?php get_footer();
