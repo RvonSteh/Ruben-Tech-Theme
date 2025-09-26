@@ -6,144 +6,145 @@ body {
 
 .pdf-container {
     overflow-x: auto;
+}
 
-    .pdf-frame {
-        --cell-height: 18px;
-        width: 800px;
+.pdf-frame {
+    --cell-height: 18px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 30px 100px 30px;
+    justify-content: start;
+
+    * {
+        font-family: 'Arial', sans-serif;
+        font-size: 10px !important;
+        font-weight: 600;
+        line-height: 1;
+    }
+
+    .table {
+        display: grid;
+        grid-template-columns: 3.5fr 5fr 2fr;
+        border: 2px solid #000;
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #000;
+
+            &:last-of-type {
+                border: none;
+            }
+
+            .cell {
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                padding: 0px 2px;
+                border-bottom: 2px solid #000;
+                height: var(--cell-height);
+
+                &:last-of-type {
+                    border-bottom: 0;
+                }
+
+                &.smal,
+                &.small * {
+                    font-size: 10px;
+
+
+                }
+
+
+                &.center,
+                &.center * {
+                    text-align: center;
+
+                }
+
+                &.light,
+                &.light * {
+                    font-weight: 300;
+
+
+                }
+
+                &.--dark {
+                    background: #C0C0C0;
+                }
+
+                &.two-cell {}
+
+                &.three-cell {
+                    height: calc(var(--cell-height) *3);
+                }
+
+                span b {
+                    font-weight: 700 !important;
+                }
+            }
+        }
+    }
+}
+
+.main-table {
+    display: flex;
+    flex-direction: column;
+
+    .body {
+        display: flex;
+        border: 2px solid #000;
+
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        padding: 20px 30px 100px 30px;
-        justify-content: start;
 
-        * {
-            font-family: 'Arial', sans-serif;
-            font-size: 10px !important;
-            font-weight: 600;
-            line-height: 1;
-        }
-
-        .table {
+        .row {
             display: grid;
-            grid-template-columns: 3.5fr 5fr 2fr;
-            border: 2px solid #000;
+            grid-template-columns: .5fr 1fr 1fr 1fr 1fr 1fr 3fr 2fr;
+            border-bottom: 1px solid #000;
 
             .col {
                 display: flex;
                 flex-direction: column;
-                border-right: 2px solid #000;
+                border-right: 1px solid #000;
 
-                &:last-of-type {
-                    border: none;
-                }
-
-                .cell {
-                    display: flex;
-                    align-items: center;
-                    justify-content: start;
-                    padding: 0px 2px;
-                    border-bottom: 2px solid #000;
-                    height: var(--cell-height);
-
-                    &:last-of-type {
-                        border-bottom: 0;
-                    }
-
-                    &.smal,
-                    &.small * {
-                        font-size: 10px;
-
-
-                    }
-
-
-                    &.center,
-                    &.center * {
-                        text-align: center;
-
-                    }
-
-                    &.light,
-                    &.light * {
-                        font-weight: 300;
-
-
-                    }
-
-                    &.--dark {
-                        background: #C0C0C0;
-                    }
-
-                    &.two-cell {}
-
-                    &.three-cell {
-                        height: calc(var(--cell-height) *3);
-                    }
-
-                    span b {
-                        font-weight: 700 !important;
-                    }
-                }
-            }
-        }
-    }
-
-    .main-table {
-        display: flex;
-        flex-direction: column;
-
-        .body {
-            display: flex;
-            border: 2px solid #000;
-
-            display: flex;
-            flex-direction: column;
-
-            .row {
-                display: grid;
-                grid-template-columns: .5fr 1fr 1fr 1fr 1fr 1fr 3fr 2fr;
-                border-bottom: 1px solid #000;
-
-                .col {
-                    display: flex;
-                    flex-direction: column;
-                    border-right: 1px solid #000;
-
-                    &.full-height {
-                        .cell {
-                            height: calc(var(--cell-height) *7);
-                        }
-                    }
-                }
-
-                .cell {
-                    display: flex;
-                    align-items: center;
-                    border-bottom: 1px solid #000;
-                    height: var(--cell-height);
-                    line-height: 1;
-                    padding: 0px 5px;
-
-                    input {
-                        padding: 0;
-                        border: none;
-                        border-radius: 0;
-                        outline: none;
-                        box-shadow: none;
-
-                    }
-                }
-
-                &.border {
+                &.full-height {
                     .cell {
-                        border-bottom: 2px solid #000;
+                        height: calc(var(--cell-height) *7);
                     }
                 }
             }
-        }
 
+            .cell {
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid #000;
+                height: var(--cell-height);
+                line-height: 1;
+                padding: 0px 5px;
+
+                input {
+                    padding: 0;
+                    border: none;
+                    border-radius: 0;
+                    outline: none;
+                    box-shadow: none;
+
+                }
+            }
+
+            &.border {
+                .cell {
+                    border-bottom: 2px solid #000;
+                }
+            }
+        }
     }
+
 }
+
 
 .loading {
     position: fixed;
@@ -185,7 +186,36 @@ body {
         padding: 20px;
         width: calc(100% - 40px);
         border-radius: 10px;
-        background: #fff;
+        background: #800000;
+
+        .input {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .row {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                label {
+                    color: #fff;
+                }
+                input,
+                select {
+                    font-size: 16px;
+                    border: 1px solid #000;
+                    background: #fff;
+                    color: #000;
+                    &::placeholder {
+                        color: #000;
+                        opacity: .6;
+                    }
+                }
+            }
+
+            
+        }
+
 
         .actions {
             display: grid;
@@ -236,6 +266,7 @@ body {
             top: 0;
             position: absolute;
             z-index: 0;
+            transition: .5s ease-in-out;
         }
 
         span {
@@ -244,24 +275,53 @@ body {
             color: #000;
             z-index: 0;
             text-align: center;
+            transition: .5s ease-in-out;
+
+            &[value="input"] {
+                color: #fff;
+            }
 
         }
 
+        &[att="print"] {
+            &:before {
+                left: 50%;
+            }
+
+            span {
+                &[value="print"] {
+                    color: #fff;
+                }
+
+                &[value="input"] {
+                    color: #000;
+                }
+            }
+        }
     }
 }
 
 .download-pdf {
     position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 80%;
-    width: 50px;
-    height: 50px;
+    right: 20px;
+    bottom: 20px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background: #fff;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 15px;
+
+    &:hover {
+        background: #800000;
+    }
 
     img {
-        width: 20px;
+        width: 100%;
 
     }
 }
