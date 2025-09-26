@@ -21,6 +21,7 @@ define('HELLO_ELEMENTOR_CHILD_VERSION', '2.0.0');
 
 include_once(NP_THEME_TEMPLATE_PATH . 'inc/helpers.php');
 include_once(NP_THEME_TEMPLATE_PATH . 'inc/shortcodes.php');
+include_once(NP_THEME_TEMPLATE_PATH . 'inc/update.php');
 /**
  * Debugging functions
  */
@@ -31,12 +32,6 @@ require_once NP_THEME_TEMPLATE_PATH . 'inc/debug/debug.php';
  */
 require_once NP_THEME_TEMPLATE_PATH . 'inc/assets.php';
 
-/**
- * Include woocommerce funstions if plugin enabled
- */
-if (class_exists('WooCommerce')) {
-    require_once NP_THEME_TEMPLATE_PATH . 'inc/woocommerce/woocommerce.php';
-}
 
 /**
  * Custom path save acf fields

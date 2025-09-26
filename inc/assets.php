@@ -59,6 +59,7 @@ function np_enqueue_styles()
 	$theme_version = wp_get_theme()->get('Version');
 	wp_enqueue_style('np-style', NP_THEME_TEMPLATE_URL . 'assets/css/theme.css', array(), $theme_version);
 	wp_enqueue_style('np-header-style', NP_THEME_TEMPLATE_URL . 'assets/css/header.css', array(), $theme_version);
+	wp_enqueue_style('np-stellennachweis-style', NP_THEME_TEMPLATE_URL . 'assets/css/stundennachweis/body.css', array(), $theme_version);
 }
 add_action('wp_enqueue_scripts', 'np_enqueue_styles');
 
@@ -70,7 +71,11 @@ add_action('wp_enqueue_scripts', 'np_enqueue_styles');
 function np_enqueue_scripts()
 {
 	$theme_version = wp_get_theme()->get('Version');
-	wp_enqueue_script('np-scripts', NP_THEME_TEMPLATE_URL . 'assets/js/theme.js', array(), $theme_version, true);
+	wp_enqueue_script('np-cloudflare', NP_THEME_TEMPLATE_URL . 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js', array(), $theme_version, true);
+	wp_enqueue_script('np-theme-scripts', NP_THEME_TEMPLATE_URL . 'assets/js/theme.js', array(), $theme_version, true);
+	wp_localize_script('np-theme-scripts', 'myplugin', [
+		'ajax_url' => admin_url('admin-ajax.php')
+	]);
 }
 add_action('wp_enqueue_scripts', 'np_enqueue_scripts');
 
