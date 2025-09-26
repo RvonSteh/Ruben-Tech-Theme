@@ -51,12 +51,20 @@ $days = get_field('days', $post_id);
                         </div>
 
                         <div class="col">
-                            <?php foreach ($group as $day) : ?>
-                                <div class="cell">
-                                    01.09.2025
+                            <?php
+                            $index = 1;
+                            foreach ($group as $dIndex => $day) :
+
+                                $index = (($gIndex * 7) + $dIndex + 1);
+                                $prefix = ($index < 10) ? '0' : '';
+                            ?>
+                                <div index="<?php echo $index ?>" class="cell date">
+                                    <?php echo $prefix . $index; ?>.09.2025
                                 </div>
                             <?php
+                                $index++;
                             endforeach; ?>
+
                         </div>
                         <div class="col">
                             <?php foreach ($group as $dIndex => $day) :
